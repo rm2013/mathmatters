@@ -1,0 +1,6 @@
+{
+	"ImportPath": "mathmatters",
+	"GoVersion": "go1.17",
+	"GodepVersion": "v80",
+	"Deps": []
+}
