@@ -20,7 +20,14 @@ func main() {
   }
 }
 func mathmatters(w http.ResponseWriter, r *http.Request) {
-  fmt.Fprintln(w, "Hello Mathmatters!")
+
+// retrieve the url
+dbURL := os.Getenv("DATABASE_URL")
+// connect to the db
+db, err := sql.Open("postgres", dbURL)
+
+fmt.Fprintln(w, err)
+fmt.Fprintln(w, "Hello Mathmatters!")
 }
 func getPort() (string, error) {
   // the PORT is supplied by Heroku
