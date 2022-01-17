@@ -1,5 +1,6 @@
 package main
 import (
+  "database/sql"
   "log"
   "fmt"
   "net/http"
@@ -22,12 +23,13 @@ func main() {
 func mathmatters(w http.ResponseWriter, r *http.Request) {
 
 // retrieve the url
-dbURL := os.Getenv("DATABASE_URL")
+  dbURL := os.Getenv("DATABASE_URL")
 // connect to the db
-db, err := sql.Open("postgres", dbURL)
+  db, err := sql.Open("postgres", dbURL)
 
-fmt.Fprintln(w, err)
-fmt.Fprintln(w, "Hello Mathmatters!")
+  fmt.Fprintln(w, err)
+  fmt.Fprintln(w, "Hello Mathmatters!")
+  defer db.Close()
 }
 func getPort() (string, error) {
   // the PORT is supplied by Heroku
